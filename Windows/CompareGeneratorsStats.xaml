@@ -1,0 +1,82 @@
+﻿<Window x:Class="WindEnergy.Windows.CompareGeneratorsStats"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEnergy.Windows"
+        mc:Ignorable="d"
+        Title="CompareGeneratorsStats" Height="471.6" Width="800">
+    <Grid>
+        <Grid x:Name="grid">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.Row="0"/>
+            <ComboBox HorizontalAlignment="Center" Name="cb1" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Width="245" Margin="10,3,9.8,3" SelectionChanged="Cb1_SelectionChanged"/>
+            
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="3" Grid.Row="0"/>
+            <ComboBox HorizontalAlignment="Center" Name="cb2" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Width="245" Margin="10.2,3,9.6,3" SelectionChanged="Cb2_SelectionChanged"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"/>
+            <TextBlock Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"/>
+            <TextBlock Text="" Name="name1" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="name2" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"/>
+            <TextBlock Text="Rated Power (W)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"/>
+            <TextBlock Text="" Name="ratedPower1" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="ratedPower2" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"/>
+            <TextBlock Text="Rated Wind Speed (m/s)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"/>
+            <TextBlock Text="" Name="ratedWind1" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="ratedWind2" Grid.Column="3" Grid.Row="6" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7"/>
+            <TextBlock Text="Wind Speed Range (m/s)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7"/>
+            <TextBlock Text="" Name="windSpeedRange1" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="windSpeedRange2" Grid.Column="3" Grid.Row="8" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="9"/>
+            <TextBlock Text="Radius (m)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="9"/>
+            <TextBlock Text="" Name="radius1" Grid.Column="0" Grid.Row="10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="radius2" Grid.Column="3" Grid.Row="10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="11"/>
+            <TextBlock Text="Swept Area (m2)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="11"/>
+            <TextBlock Text="" Name="sweptArea1" Grid.Column="0" Grid.Row="12" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="sweptArea2" Grid.Column="3" Grid.Row="12" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="13"/>
+            <TextBlock Text="Height (m)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="0" FontSize="24" Grid.ColumnSpan="3" Grid.Row="13"/>
+            <TextBlock Text="" Name="height1" Grid.Column="0" Grid.Row="14" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="height2" Grid.Column="3" Grid.Row="14" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="Transparent" Stroke="Black" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="15"/>
+            <TextBlock Text="Price (€)" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="0" FontSize="24" Grid.ColumnSpan="3" Grid.Row="15"/>
+            <TextBlock Text="" Name="price1" Grid.Column="0" Grid.Row="16" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+            <TextBlock Text="" Name="price2" Grid.Column="3" Grid.Row="16" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

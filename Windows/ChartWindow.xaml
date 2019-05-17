@@ -1,0 +1,46 @@
+﻿<Window x:Class="WindEnergy.ChartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        mc:Ignorable="d"
+        Title="Generated Power" Height="450" Width="1468.4">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Name="scroller" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,0,208.8,0">
+            <Grid Name="printCanvas" Height="Auto" VerticalAlignment="Top" >
+               <Grid.RowDefinitions>
+                    <RowDefinition Height="420"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <DVC:Chart x:Name="chart" Grid.Column="0" Grid.Row="0" Focusable="True" Height="Auto" >
+
+                    <DVC:Chart.Axes>
+                        <DVC:LinearAxis Name="powerAxis" Orientation="Y" Title="Power, kW*h"></DVC:LinearAxis>
+
+                    </DVC:Chart.Axes>
+                </DVC:Chart>
+
+            </Grid>
+        </ScrollViewer>
+        <Label x:Name="totalLbl" Content="Power Produced:" Margin="0,51,87,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="117"/>
+        <RadioButton x:Name="hourlyRB" Content="Hourly" VerticalAlignment="Top" Margin="0,10,19,0" Checked="HourlyRB_Checked" HorizontalAlignment="Right" Width="61"/>
+        <RadioButton x:Name="dailyRB" Content="Daily" Margin="0,31,26,0" Checked="DailyRB_Checked" Height="15" VerticalAlignment="Top" HorizontalAlignment="Right" Width="54"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,154,-0.6,0" HorizontalAlignment="Right" Width="1322">
+            <Grid HorizontalAlignment="Right" Name="legend" Height="278" VerticalAlignment="Top" Width="168"/>
+        </ScrollViewer>
+        <Button x:Name="reportBtn" Content="Get report" Margin="0,11,126,0" VerticalAlignment="Top" Click="ReportBtn_Click" HorizontalAlignment="Right" Width="78"/>
+        <Button x:Name="compareBtn" Content="Compare" Margin="0,131,125.4,0" VerticalAlignment="Top" Click="CompareBtn_Click" HorizontalAlignment="Right" Width="78"/>
+        <Label x:Name="comparerLbl" Content="" Margin="0,124,6.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="117"/>
+        <Label x:Name="totalLbl_Copy" Content="Green fare:" Margin="0,75,134.4,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="70"/>
+        <Label Content="" Name="greenFareLbl" Margin="0,77,70.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="64"/>
+        <Label x:Name="totalLbl_Copy1" Content="Green fare rate:" Margin="0,100,110.4,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="93"/>
+        <TextBox Name="greenRateTB" Height="23" Margin="0,103,70.4,0" TextWrapping="Wrap" Text="0,15" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40" TextChanged="GreenRateTB_TextChanged"/>
+        <Label Content="€ for kW*h" Margin="0,100,-0.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="66"/>
+    </Grid>
+</Window>

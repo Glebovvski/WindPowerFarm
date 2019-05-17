@@ -1,0 +1,94 @@
+﻿<Window x:Class="WindEnergy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEnergy"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="613.083" Width="1155.614">
+    <Grid Margin="0,0,0.6,0" Height="582" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <m:Map Name="bingMap" Culture="En" Mode="Road" CredentialsProvider="vTvP31Pv3DpumG2JYhK7~DGOgyI-AXvUfph3U-iDKuA~AiCm0le-TG-By6M0hzEqnbyE172lQs9HCL8BUemHZ0xnn7HoOXDwuiYNHN6RXyT- "
+               Center="48.3830, 31.1829" ZoomLevel="5.8" MouseDoubleClick="MapWithPushpins_MouseDoubleClick" HorizontalAlignment="Left" Width="817" Margin="10,10,0,0" Height="564" VerticalAlignment="Top"/>
+        <Button x:Name="addWindGen" Content="Add New Wind Generator" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Margin="988,544,0,0" Height="28" Click="AddWindGen_Click"/>
+        <ComboBox x:Name="WindGenList" HorizontalAlignment="Left" Margin="974,52,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="WindGenList_SelectionChanged" ItemsSource="{Binding WindGenerators}"/>
+        <Label Content="Wind Generator:" HorizontalAlignment="Left" Margin="871,49,0,0" VerticalAlignment="Top"/>
+        <GroupBox Header="Characteristics" Height="298" Margin="0,93,9.8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="268">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Name:" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45"/>
+                <Label Content="Rated Power:" Margin="10,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81"/>
+                <Label Content="Rated Wind Speed:" Margin="10,72,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label Content="Min Wind Speed:" Margin="10,103,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label Content="Max Wind Speed:" Margin="10,129,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label Content="Rotor Radius:" Margin="10,155,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label Content="Swept Area:" Margin="10,186,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label x:Name="nameLbl" Content="" HorizontalAlignment="Left" Margin="134,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ratedPowerLbl" Content="" HorizontalAlignment="Left" Margin="134,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ratedWindSpeedLbl" Content="" HorizontalAlignment="Left" Margin="134,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="minWindSpeedLbl" Content="" HorizontalAlignment="Left" Margin="134,103,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="maxWindSpeedLbl" Content="" HorizontalAlignment="Left" Margin="134,129,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="rotorLbl" Content="" HorizontalAlignment="Left" Margin="134,155,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="sweptAreaLbl" Content="" HorizontalAlignment="Left" Margin="134,186,0,0" VerticalAlignment="Top"/>
+                <Label Content="Height:" Margin="10,212,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label x:Name="heightLbl" Content="" HorizontalAlignment="Left" Margin="134,212,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W" Content="W" HorizontalAlignment="Left" Margin="192,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W_Copy" Content="m/s" HorizontalAlignment="Left" Margin="183,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W_Copy1" Content="m/s" HorizontalAlignment="Left" Margin="183,103,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W_Copy2" Content="m/s" HorizontalAlignment="Left" Margin="183,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="1,0.516"/>
+                <Label x:Name="W_Copy3" Content="m" HorizontalAlignment="Left" Margin="192,155,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W_Copy4" Content="m" HorizontalAlignment="Left" Margin="192,185,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W_Copy5" Content="2" HorizontalAlignment="Left" Margin="204,181,0,0" VerticalAlignment="Top" FontSize="8"/>
+                <Label x:Name="W_Copy6" Content="m" HorizontalAlignment="Left" Margin="192,212,0,0" VerticalAlignment="Top"/>
+                <Label Content="Price:" Margin="10,243,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111"/>
+                <Label x:Name="priceLabel" Content="" HorizontalAlignment="Left" Margin="134,243,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="W_Copy7" Content="€" HorizontalAlignment="Left" Margin="192,243,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="powerRangeBtn" Content="Calculate Power" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" Margin="832,544,0,0" Height="28" Click="PowerRangeBtn_Click"/>
+        <TextBox x:Name="searchLocationTB" HorizontalAlignment="Left" Height="23" Margin="1036,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+        <Button Content="Search:" Name="searchBtn" HorizontalAlignment="Left" Margin="965,22,0,0" VerticalAlignment="Top" Width="63" Click="SearchBtn_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="871,396,0,0" VerticalAlignment="Top" x:Name="startDateDP">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBox x:Name="PART_TextBox" 
+                                    Text="Select Start Date" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <DatePicker x:Name="endDateDP" HorizontalAlignment="Left" Margin="1013,396,0,0" VerticalAlignment="Top" Width="126">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBox x:Name="PART_TextBox" 
+                                    Text="Select End Date" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <RadioButton x:Name="hourlyRB" Content="Hourly" HorizontalAlignment="Left" Margin="1013,441,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="dailyRB" Content="Daily" HorizontalAlignment="Left" Margin="1013,461,0,0" VerticalAlignment="Top"/>
+        <Button Content="Change Map Mode" HorizontalAlignment="Left" Margin="832,503,0,0" VerticalAlignment="Top" Width="137" Height="30" Click="Button_Click"/>
+        <Button Content="Compare  Wind Generators" HorizontalAlignment="Left" Margin="988,503,0,0" VerticalAlignment="Top" Width="151" Height="30" Click="Button_Click_1"/>
+
+    </Grid>
+</Window>
