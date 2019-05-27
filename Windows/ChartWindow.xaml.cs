@@ -497,11 +497,14 @@ namespace WindEnergy
                 docGrid.Children.Add(greenRate);
                 docGrid.Children.Add(greenTotal);
 
+                SolidColorBrush errorBrush = new SolidColorBrush(Colors.DarkRed);
+                errorBrush.Opacity = 0.5;
+
                 for (int j = 0; j <= 11; j++)
                 {
                     Rectangle rectangle = new Rectangle();
                     rectangle.Stroke = Brushes.Black;
-                    rectangle.Fill = Brushes.Transparent;
+                    rectangle.Fill = errorText.Text.Length>0? errorBrush : Brushes.Transparent;
                     Grid.SetRow(rectangle, i + 1);
                     Grid.SetColumn(rectangle, j);
                     docGrid.Children.Add(rectangle);

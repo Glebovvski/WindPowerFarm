@@ -130,6 +130,7 @@
     <Compile Include="Migrations\201905131337180_Price.Designer.cs">
       <DependentUpon>201905131337180_Price.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindGenerator\AsynchronousClient.cs" />
     <Compile Include="Windows\AddGenWindow.xaml.cs">
       <DependentUpon>AddGenWindow.xaml</DependentUpon>
     </Compile>

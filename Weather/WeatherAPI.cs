@@ -13,7 +13,7 @@ namespace WindEnergy
 {
     public class WeatherAPI
     {
-        private string apiKey = ConfigurationManager.AppSettings["Weatherapi"];//"a11bc6b34ba9f3116eb6e73c3b461cdc";
+        private string apiKey = ConfigurationManager.AppSettings["Weatherapi"];
         ZipHttpClient client = new ZipHttpClient("https://api.darksky.net/");
         OptionalParameters parameters = new OptionalParameters();
         DarkSkyEnumJsonConverter converter = new DarkSkyEnumJsonConverter();
