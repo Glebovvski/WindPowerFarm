@@ -25,7 +25,7 @@ namespace WindEnergy
 
         public decimal? Price { get; set; }
 
-        private double KPD = 0.8;
+        private double KPD = 0.4;
         public double CalculatePower(double airDensity, double windSpeed)
         {
             if (SweptArea == null)

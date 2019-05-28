@@ -4,8 +4,10 @@ using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,7 +30,7 @@ namespace WindEnergy
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Path selectedRegion;
+        public System.Windows.Shapes.Path selectedRegion;
         public WindGenerator selectedWindGen;
         public ViewModel vm;
         public WeatherAPI weather;
@@ -70,8 +72,8 @@ namespace WindEnergy
 
         private void ukraine_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (selectedRegion != (Path)sender)
-                ((Path)sender).Fill = Brushes.Blue;
+            if (selectedRegion != (System.Windows.Shapes.Path)sender)
+                ((System.Windows.Shapes.Path)sender).Fill = Brushes.Blue;
         }
 
         private void AddWindGen_Click(object sender, RoutedEventArgs e)
@@ -123,7 +125,15 @@ namespace WindEnergy
             {
                 if (CheckSelectedRegionForBingMap() && CheckDates())
                 {
-                    City bingArea = new BingMap().GeocodeByPoint(selectedLocation);
+                    string responce = new AsynchronousClient().SendMessage(11000, "get_location:" + selectedLocation.Latitude.ToString().Replace(",",".")+","+selectedLocation.Longitude.ToString().Replace(",", "."));
+                    string[] city = responce.Split(';');
+                    City bingArea = new City()
+                    {
+                        Name=city[0],
+                        Latitude = double.Parse(city[1]),
+                        Longitude = double.Parse(city[2])
+                    };
+
                     OptionalParameters optionalParameters = new OptionalParameters()
                     {
                         MeasurementUnits = "si",
@@ -165,13 +175,13 @@ namespace WindEnergy
         {
             List<Weather> listOfMissingDatesHourly = new List<Weather>();
             double averageWindSpeed = weatherListHourly.Select(x => x.windSpeed).Average();
-            for(DateTime start = startDate; start<weatherListHourly.First().date; start = start.AddHours(1))
+            for (DateTime start = startDate; start < weatherListHourly.First().date; start = start.AddHours(1))
             {
                 listOfMissingDatesHourly.Add(new Weather()
                 {
                     windSpeed = averageWindSpeed,
                     date = start,
-                    Area=weatherListHourly.First().Area
+                    Area = weatherListHourly.First().Area
                 });
             }
             weatherListHourly.AddRange(listOfMissingDatesHourly);
@@ -231,7 +241,15 @@ namespace WindEnergy
         {
             if (searchLocationTB.Text != string.Empty)
             {
-                City foundCity = new BingMap().GeocodeByAddress(searchLocationTB.Text);
+                string response = new AsynchronousClient().SendMessage(11000, "get_location:" + searchLocationTB.Text);
+                string[] cityArray = response.Split(';');
+                City foundCity = new City()
+                {
+                    Name = cityArray[0],
+                    Latitude = double.Parse(cityArray[1]),
+                    Longitude = double.Parse(cityArray[2])
+                };
+                //new BingMap().GeocodeByAddress(searchLocationTB.Text);
                 searchLocationTB.Text = foundCity.Name;
                 ClearPinsOnMap();
                 Pushpin pin = new Pushpin();

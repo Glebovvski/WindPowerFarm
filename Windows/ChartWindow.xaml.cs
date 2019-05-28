@@ -138,7 +138,7 @@ namespace WindEnergy
                     IndependentValuePath = "Key",
                     DependentValuePath = "Value",
                     ItemsSource = dataList,
-                    
+
                 };
                 dailyTotalPowers.Add(new DailyTotalPower()
                 {
@@ -499,12 +499,19 @@ namespace WindEnergy
 
                 SolidColorBrush errorBrush = new SolidColorBrush(Colors.DarkRed);
                 errorBrush.Opacity = 0.5;
+                SolidColorBrush ratedWindBrush = new SolidColorBrush(Colors.DarkGreen);
+                ratedWindBrush.Opacity = 0.5;
 
                 for (int j = 0; j <= 11; j++)
                 {
                     Rectangle rectangle = new Rectangle();
                     rectangle.Stroke = Brushes.Black;
-                    rectangle.Fill = errorText.Text.Length>0? errorBrush : Brushes.Transparent;
+                    if (errorText.Text.Length > 0)
+                        rectangle.Fill = errorBrush;
+                    else if (double.Parse(windText.Text) >= double.Parse(ratedWindText.Text))
+                        rectangle.Fill = ratedWindBrush;
+                    else
+                        rectangle.Fill = Brushes.Transparent;
                     Grid.SetRow(rectangle, i + 1);
                     Grid.SetColumn(rectangle, j);
                     docGrid.Children.Add(rectangle);

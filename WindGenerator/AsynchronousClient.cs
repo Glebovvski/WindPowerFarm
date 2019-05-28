@@ -15,7 +15,7 @@ public class AsynchronousClient
     private ManualResetEvent sendDone = new ManualResetEvent(false);
     private ManualResetEvent receiveDone = new ManualResetEvent(false);
 
-    private string response = string.Empty;
+    private string response;
     private bool _releaseSockets;
 
     public string SendMessage(int port, string message, bool releaseSockects = false)
@@ -40,7 +40,7 @@ public class AsynchronousClient
             Receive(client);
             receiveDone.WaitOne();
 
-            Console.WriteLine("Response received : {0}", response);
+            //Console.WriteLine("Response received : {0}", response);
 
             if (releaseSockects)
             {
@@ -100,9 +100,9 @@ public class AsynchronousClient
             if (bytesRead > 0)
             {
                 state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
-
-                client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                    new AsyncCallback(ReceiveCallback), state);
+                //state.sb = state.buffer.Take(bytesRead).ToArray();
+                client.BeginReceive(state.buffer, 0, bytesRead/*StateObject.BufferSize*/, 0,
+                    /*new AsyncCallback(ReceiveCallback)*/ReceiveCallback, state);
             }
             else
             {
@@ -119,6 +119,7 @@ public class AsynchronousClient
             Console.WriteLine(e.ToString());
         }
     }
+
 
     private void Send(Socket client, String data)
     {
@@ -157,4 +158,6 @@ public class StateObject
     public byte[] buffer = new byte[BufferSize];
     // Received data string.  
     public StringBuilder sb = new StringBuilder();
+
+//public byte[] sb = new byte[0];
 }

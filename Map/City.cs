@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace WindEnergy
 {
-    [Serializable()]
+    [Serializable]
     public class City
     {
         [System.Xml.Serialization.XmlElement("Name")]
